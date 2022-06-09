@@ -19,7 +19,7 @@ def latest_movies(page):
     if 'genre' in request.args and len(request.args['genre'])!=0:
         queryFilter['genres'] = request.args['genre']
     if 'runtime' in request.args:
-        queryFilter['runtimeMinutes'] = {"$lte":request.args['runtime']}
+        queryFilter['runtimeMinutes'] = {"$lte":int(request.args['runtime'])}
 
     l = get_paginated_movies_latest(page,sortc, sortd,queryFilter)
     
