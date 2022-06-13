@@ -2,6 +2,7 @@ from flask_pymongo import PyMongo
 
 mongo = PyMongo()
 
+#query function
 def get_paginated_movies_latest(page, sortc, sortd, queryFilter):
 
     s = (page)*15

@@ -2,13 +2,16 @@ from flask import Flask, Blueprint, redirect, request, jsonify, abort, make_resp
 from .db import get_paginated_movies_latest
 movie_bp = Blueprint('movies_bp', __name__)
 
+#handler for base path redirects to  handler for url with query
 @movie_bp.route('/',methods=['GET'])
 def home():
     return redirect(url_for('movies_bp.latest_movies', page=0))
 
+#handler for url with query
 @movie_bp.route('/<int:page>', methods=['GET'])
 def latest_movies(page):
 
+    #default filter
     sortc = "startYear"
     sortd = -1
     queryFilter = {}
